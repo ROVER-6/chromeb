@@ -1,0 +1,13 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="35px" height="35px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Group-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(11.000000, 11.000000) rotate(-180.000000) translate(-11.000000, -11.000000) translate(0.000000, 0.000000)">
+        <rect id="Rectangle-7" fill="#FFFFFF" x="0" y="0" width="22" height="22"></rect>
+        <path d="M22,21 L21,22 L21,21 L22,21 Z M1,21 L21,21 L21,1 L1,1 L1,21 Z M0,0 L22,0 L22,22 L0,22 L0,0 Z" id="Rectangle-2" fill="#3D6BED"></path>
+        <g id="pfeil" transform="translate(3.000000, 8.000000)" fill="#3D6BED">
+            <path d="M4,2.1337822 C4.14708668,2.04869714 4.31785643,2 4.5,2 L9,2 C9.55228475,2 10,2.44771525 10,3 C10,3.55228475 9.55228475,4 9,4 L4.5,4 C4.31785643,4 4.14708668,3.95130286 4,3.8662178 L4,6 L0,3 L4,0 L4,2.1337822 Z" id="Combined-Shape"></path>
+        </g>
+        <path d="M5.00000183,7 C5.00180745,5.34283539 6.34273786,4 7.99715203,4 L14.002848,4 C15.6581293,4 17,5.34237885 17,7.00335124 L17,14.9966488 C17,16.6553538 15.6583772,18 14.002848,18 L7.99715203,18 C6.34298407,18 5.00180531,16.6594264 5.00000182,15 L6.00001667,15 C6.00460438,16.1026811 6.89809716,17 7.99961498,17 L14.000385,17 C15.1125667,17 16,16.1007504 16,14.9914698 L16,7.0085302 C16,5.90195036 15.1047419,5 14.000385,5 L7.99961498,5 C6.89028552,5 6.00455318,5.89464321 6.0000175,7 L5.00000169,7 Z" id="Combined-Shape" fill="#3D6BED"></path>
+    </g>
+</svg>

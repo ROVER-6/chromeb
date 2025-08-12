@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+#webcam-output, #camera-select{
+    display: block;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+
+.note{
+    text-align: center;
+    margin: 0 5em;
+}
+
+.return {
+    background-color: #181818;
+    font-family: "Lexend Exa";
+    color: white;
+    padding: 20px 30px;
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+    margin-top: 4%;
+}

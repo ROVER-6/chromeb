@@ -1,0 +1,40 @@
+<link href="styles.css" rel="stylesheet">
+
+<title>Chromebook FakeWAD</title>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<div id="particles-js"></div>
+
+<script>
+  particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('Particles.js config loaded');
+  });
+
+  function copy() {
+    navigator.clipboard.writeText("chrome://system");
+    alert("Copied!")
+  }
+</script>
+
+
+<body class="body1">
+  <div class="vertical-center">
+    <h1 class="title">FakeWAD</h1>
+    <h2 class="subheading">For Testing Chromebooks</h2>
+
+    <div class="center-div">
+        <button class="glassbutton" onclick="copy()">
+            Copy BIOS URL
+        </button>
+        <a class="glassbutton" href="keytest.html">
+            Key Test
+        </a>
+        <a class="glassbutton" href="monitortest/test.html">
+            Eizo Test
+        </a>
+        <a class="glassbutton" href="webcamtest/index.html">
+            Webcam Test
+        </a>
+    </div>
+  </div>
+</body>

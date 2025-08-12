@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="166px" height="30px" viewBox="0 0 166 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>leertaste</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Reinlayout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05-tutorial-02" transform="translate(-517.000000, -193.000000)" fill="#FFFFFF">
+            <g id="tutorial" transform="translate(420.000000, 193.000000)">
+                <g id="leertaste" transform="translate(97.000000, 0.000000)">
+                    <polygon id="Line" points="71.5 20 90.5 20 90.5 19 71.5 19"></polygon>
+                    <polygon id="Line" points="90 13 90 20 91 20 91 13"></polygon>
+                    <polygon id="Line" points="71 13 71 20 72 20 72 13"></polygon>
+                    <path d="M166,29 L165,30 L165,29 L166,29 Z M1,29 L165,29 L165,1 L1,1 L1,29 Z M0,0 L166,0 L166,30 L0,30 L0,0 Z" id="Rectangle-4"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

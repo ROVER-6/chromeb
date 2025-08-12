@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>UK Keyboard + Mouse Tester</title>
+<style>
+  :root{
+    --bg:#0f1112;
+    --panel:#121415;
+    --key-bg: rgba(255,255,255,0.02);
+    --border: rgba(255,255,255,0.08);
+    --accent: #6be7ff;
+    --text: #e9eef0;
+    font-family: Inter, system-ui, "Helvetica Neue", Arial;
+  }
+
+  html,body{height:100%; margin:0;}
+  body{
+    background:linear-gradient(180deg,#0b0c0d 0%, #0f1112 100%);
+    color:var(--text);
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:flex-start;
+    padding: 24px;
+    gap: 16px;
+    user-select: none;
+  }
+
+  /* Recent keys bar */
+  #recent-keys {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 30px;
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 6px 14px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    font-family: monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  .tester {
+    width: 100%;
+    max-width: 1100px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:28px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+  }
+
+  h1{
+    margin:0 0 16px 0;
+    font-size:24px;
+    text-align:center;
+    letter-spacing:0.6px;
+    font-weight:600;
+  }
+
+  .keyboard {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .row {
+    display:flex;
+    gap:8px;
+    justify-content:center;
+  }
+
+  .key {
+    flex: 0 0 auto;
+    min-width:36px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:var(--key-bg);
+    border:1px solid var(--border);
+    color:var(--text);
+    font-size:13px;
+    user-select:none;
+    box-sizing:border-box;
+    padding:6px 10px;
+    transition: transform .08s ease, box-shadow .12s ease, border-color .12s ease;
+    position:relative;
+  }
+
+  .key.small { min-width:46px; width:46px }
+  .key.xs { min-width:36px; width:36px; height:40px; font-size:12px }
+  .key.lg { min-width:84px; padding-left:14px; padding-right:14px }
+  .key.xl { min-width:136px; padding-left:18px; padding-right:18px }
+  .key.space { min-width:420px; max-width:100%; border-radius:10px; height:56px }
+
+  /* Permanent pressed style */
+  .key.pressed {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(107,231,255,0.5);
+  }
+
+  /* Press animation */
+  .key.press-anim {
+    animation: pressFlash 0.15s ease;
+  }
+
+  @keyframes pressFlash {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(107,231,255,0.5); }
+    50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(107,231,255,0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(107,231,255,0.5); }
+  }
+
+  /* small label for showing key code */
+  .code {
+    position:absolute;
+    bottom:4px;
+    right:6px;
+    font-size:9px;
+    opacity:0.45;
+  }
+
+  /* Responsive scaling for small screens */
+  @media (max-width:700px){
+    .key.space { min-width:220px }
+    .key { min-width:30px; height:40px; font-size:12px }
+    h1 { font-size:18px }
+  }
+</style>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+  .returnlink {
+    background-color: rgba(255,255,255,0.02);
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-family: "Lexend Exa";
+    border: 0.1px solid #6be7ff;
+    border-radius: 12px;
+    transition: 0.15s ease-in-out;
+  }
+  .returnlink:hover {
+    background-color: rgba(255,255,255,0.02);
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-family: "Lexend Exa";
+    border: 0.1px solid #6be7ff;
+    border-radius: 12px;
+    box-shadow: 0 0px 10px #6be7ff;
+    transition: 0.15s ease-in-out;
+  }
+</style>
+<body>
+  <a class="returnlink" href="index.html">Return</a>
+
+  <!-- Recent keys display bar -->
+  <div id="recent-keys">Recent keys: none</div>
+
+  <div class="tester" id="tester">
+    <h1>UK Keyboard + Mouse Tester</h1>
+
+    <div class="keyboard" id="keyboard">
+      <!-- Mouse Buttons Row -->
+      <div class="row">
+        <div class="key lg" data-codes="MouseLeft">Mouse Left</div>
+        <div class="key lg" data-codes="MouseMiddle">Mouse Middle</div>
+        <div class="key lg" data-codes="MouseRight">Mouse Right</div>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="row">
+        <div class="key xs" data-codes="Backquote" data-label="¬ `">¬ ` <span class="code">Backquote</span></div>
+        <div class="key xs" data-codes="Digit1" data-label="1 !">1 !</div>
+        <div class="key xs" data-codes="Digit2" data-label="2 @">2 @</div>
+        <div class="key xs" data-codes="Digit3" data-label="3 #">3 #</div>
+        <div class="key xs" data-codes="Digit4" data-label="4 $">4 $</div>
+        <div class="key xs" data-codes="Digit5" data-label="5 %">5 %</div>
+        <div class="key xs" data-codes="Digit6" data-label="6 ^">6 ^</div>
+        <div class="key xs" data-codes="Digit7" data-label="7 &">7 &</div>
+        <div class="key xs" data-codes="Digit8" data-label="8 *">8 *</div>
+        <div class="key xs" data-codes="Digit9" data-label="9 (">9 (</div>
+        <div class="key xs" data-codes="Digit0" data-label="0 )">0 )</div>
+        <div class="key xs" data-codes="Minus" data-label="- _">- _</div>
+        <div class="key xs" data-codes="Equal" data-label="= +">= +</div>
+        <div class="key lg" data-codes="Backspace" data-label="Backspace">Backspace <span class="code">Backspace</span></div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row">
+        <div class="key lg" data-codes="Tab" data-label="Tab">Tab <span class="code">Tab</span></div>
+        <div class="key" data-codes="KeyQ" data-label="Q">Q</div>
+        <div class="key" data-codes="KeyW" data-label="W">W</div>
+        <div class="key" data-codes="KeyE" data-label="E">E</div>
+        <div class="key" data-codes="KeyR" data-label="R">R</div>
+        <div class="key" data-codes="KeyT" data-label="T">T</div>
+        <div class="key" data-codes="KeyY" data-label="Y">Y</div>
+        <div class="key" data-codes="KeyU" data-label="U">U</div>
+        <div class="key" data-codes="KeyI" data-label="I">I</div>
+        <div class="key" data-codes="KeyO" data-label="O">O</div>
+        <div class="key" data-codes="KeyP" data-label="P">P</div>
+        <div class="key xs" data-codes="BracketLeft" data-label="[ {">[ {</div>
+        <div class="key xs" data-codes="BracketRight" data-label="] }">] }</div>
+        <div class="key xs" data-codes="Backslash,IntlBackslash" data-label="\\ |"> \ |</div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="row">
+        <div class="key lg" data-codes="CapsLock" data-label="Caps">CapsLock <span class="code">CapsLock</span></div>
+        <div class="key" data-codes="KeyA" data-label="A">A</div>
+        <div class="key" data-codes="KeyS" data-label="S">S</div>
+        <div class="key" data-codes="KeyD" data-label="D">D</div>
+        <div class="key" data-codes="KeyF" data-label="F">F</div>
+        <div class="key" data-codes="KeyG" data-label="G">G</div>
+        <div class="key" data-codes="KeyH" data-label="H">H</div>
+        <div class="key" data-codes="KeyJ" data-label="J">J</div>
+        <div class="key" data-codes="KeyK" data-label="K">K</div>
+        <div class="key" data-codes="KeyL" data-label="L">L</div>
+        <div class="key xs" data-codes="Semicolon" data-label="; :">; :</div>
+        <div class="key xs" data-codes="Quote" data-label="' @'">' @</div>
+        <div class="key xl" data-codes="Enter" data-label="Enter">Enter <span class="code">Enter</span></div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="row">
+        <div class="key xl" data-codes="ShiftLeft" data-label="Shift">Shift <span class="code">ShiftLeft</span></div>
+        <div class="key" data-codes="KeyZ" data-label="Z">Z</div>
+        <div class="key" data-codes="KeyX" data-label="X">X</div>
+        <div class="key" data-codes="KeyC" data-label="C">C</div>
+        <div class="key" data-codes="KeyV" data-label="V">V</div>
+        <div class="key" data-codes="KeyB" data-label="B">B</div>
+        <div class="key" data-codes="KeyN" data-label="N">N</div>
+        <div class="key" data-codes="KeyM" data-label="M">M</div>
+        <div class="key xs" data-codes="Comma" data-label=", <">, <</div>
+        <div class="key xs" data-codes="Period" data-label=". >">. ></div>
+        <div class="key xs" data-codes="Slash" data-label="/ ?">/ ?</div>
+        <div class="key xl" data-codes="ShiftRight" data-label="Shift">Shift <span class="code">ShiftRight</span></div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="row">
+        <div class="key xs" data-codes="ControlLeft" data-label="Ctrl">Ctrl</div>
+        <div class="key xs" data-codes="MetaLeft" data-label="Win">Win</div>
+        <div class="key xs" data-codes="AltLeft" data-label="Alt">Alt</div>
+        <div class="key space" data-codes="Space" data-label="Space">Space <span class="code">Space</span></div>
+        <div class="key xs" data-codes="AltRight" data-label="AltGr">AltGr</div>
+        <div class="key xs" data-codes="ContextMenu" data-label="Menu">Menu</div>
+        <div class="key xs" data-codes="ControlRight" data-label="Ctrl">Ctrl</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const keyEls = Array.from(document.querySelectorAll('.key'));
+const lookup = new Map();
+const recentKeysEl = document.getElementById('recent-keys');
+const recentKeys = [];
+
+// Build lookup table for event.code -> element(s)
+keyEls.forEach(el => {
+  const codes = (el.dataset.codes || '').split(',').map(s => s.trim()).filter(Boolean);
+  codes.forEach(code => {
+    if (!lookup.has(code)) lookup.set(code, []);
+    lookup.get(code).push(el);
+  });
+});
+
+// Helper: Update recent keys list UI (max 10)
+function addRecentKey(keyName) {
+  recentKeys.unshift(keyName);
+  if (recentKeys.length > 10) recentKeys.pop();
+  recentKeysEl.textContent = 'Recent keys: ' + recentKeys.join(', ');
+}
+
+// Mark key as pressed permanently and animate it
+function markByCode(code) {
+  const els = lookup.get(code);
+  if (!els) return;
+  els.forEach(e => {
+    if (!e.classList.contains('pressed')) e.classList.add('pressed');
+
+    e.classList.remove('press-anim'); // reset animation if any
+    void e.offsetWidth; // reflow to restart animation
+    e.classList.add('press-anim');
+
+    setTimeout(() => e.classList.remove('press-anim'), 250);
+  });
+}
+
+// Keyboard input
+document.addEventListener('keydown', (ev) => {
+  if (ev.repeat) return; // avoid repeats
+  markByCode(ev.code);
+  addRecentKey(ev.code);
+
+  // Fallback if code not found
+  if (!lookup.has(ev.code) && ev.key) {
+    const alt = ev.key === ' ' ? 'Space' : ev.key;
+    markByCode(alt);
+  }
+});
+
+// Mouse physical clicks
+document.addEventListener('mousedown', (ev) => {
+  if (ev.button === 0) {
+    markByCode('MouseLeft');
+    addRecentKey('MouseLeft');
+  }
+  else if (ev.button === 1) {
+    markByCode('MouseMiddle');
+    addRecentKey('MouseMiddle');
+  }
+  else if (ev.button === 2) {
+    markByCode('MouseRight');
+    addRecentKey('MouseRight');
+  }
+});
+
+// Disable context menu on right click globally
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable default action on middle mouse button (usually scroll wheel click)
+document.addEventListener('auxclick', e => {
+  if (e.button === 1) e.preventDefault();
+});
+
+// Mouse clicks on UI keys
+keyEls.forEach(el => {
+  el.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    const codes = (el.dataset.codes || '').split(',').map(s => s.trim()).filter(Boolean);
+    codes.forEach(code => {
+      markByCode(code);
+      addRecentKey(code);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
