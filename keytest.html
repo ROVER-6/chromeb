@@ -242,6 +242,7 @@
         <div class="key xs" data-codes="Period" data-label=". >">. ></div>
         <div class="key xs" data-codes="Slash" data-label="/ ?">/ ?</div>
         <div class="key xl" data-codes="ShiftRight" data-label="Shift">Shift <span class="code">ShiftRight</span></div>
+        <div class="key xs" data-codes="ArrowUp" data-label="Up">↑</div>
       </div>
 
       <!-- Row 5 -->
@@ -250,8 +251,10 @@
         <div class="key lg" data-codes="AltLeft" data-label="Alt">Alt</div>
         <div class="key space" data-codes="Space" data-label="Space">Space <span class="code">Space</span></div>
         <div class="key xs" data-codes="AltRight" data-label="AltGr">AltGr</div>
-        <div class="key xs" data-codes="ContextMenu" data-label="Menu">Menu</div>
         <div class="key xs" data-codes="ControlRight" data-label="Ctrl">Ctrl</div>
+        <div class="key xs" data-codes="ArrowLeft" data-label="Up">←</div>
+        <div class="key xs" data-codes="ArrowDown" data-label="Up">↓</div>
+        <div class="key xs" data-codes="ArrowRight" data-label="Up">→</div>
       </div>
     </div>
   </div>
@@ -344,7 +347,7 @@ document.addEventListener('auxclick', e => {
 });
 
 // Mouse clicks on UI keys
-keyEls.forEach(el => {
+/*keyEls.forEach(el => {
   el.addEventListener('pointerdown', (e) => {
     e.preventDefault();
     const codes = (el.dataset.codes || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -353,7 +356,7 @@ keyEls.forEach(el => {
       addRecentKey(code);
     });
   });
-});
+});*/
 </script>
 
 </body>
