@@ -213,7 +213,7 @@
 
       <!-- Row 3 -->
       <div class="row">
-        <div class="key lg" data-codes="CapsLock" data-label="Caps">CapsLock <span class="code">CapsLock</span></div>
+        <div class="key lg" data-codes="MetaLeft" data-label="Caps">Search <span class="code"></span></div>
         <div class="key" data-codes="KeyA" data-label="A">A</div>
         <div class="key" data-codes="KeyS" data-label="S">S</div>
         <div class="key" data-codes="KeyD" data-label="D">D</div>
@@ -246,9 +246,8 @@
 
       <!-- Row 5 -->
       <div class="row">
-        <div class="key xs" data-codes="ControlLeft" data-label="Ctrl">Ctrl</div>
-        <div class="key xs" data-codes="MetaLeft" data-label="Win">Win</div>
-        <div class="key xs" data-codes="AltLeft" data-label="Alt">Alt</div>
+        <div class="key lg" data-codes="ControlLeft" data-label="Ctrl">Ctrl</div>
+        <div class="key lg" data-codes="AltLeft" data-label="Alt">Alt</div>
         <div class="key space" data-codes="Space" data-label="Space">Space <span class="code">Space</span></div>
         <div class="key xs" data-codes="AltRight" data-label="AltGr">AltGr</div>
         <div class="key xs" data-codes="ContextMenu" data-label="Menu">Menu</div>
@@ -297,6 +296,19 @@ function markByCode(code) {
 // Keyboard input
 document.addEventListener('keydown', (ev) => {
   if (ev.repeat) return; // avoid repeats
+
+  if (ev.code === 'Tab') {
+    ev.preventDefault()
+  }
+
+  if (ev.code === 'Space') {
+    ev.preventDefault()
+  }
+
+  if (ev.code === 'ArrowDown') {
+    ev.preventDefault()
+  }
+
   markByCode(ev.code);
   addRecentKey(ev.code);
 
