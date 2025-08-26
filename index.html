@@ -12,7 +12,12 @@
 
   function copy() {
     navigator.clipboard.writeText("chrome://system");
-    alert("Copied!")
+    // alert("Copied!") -- old method
+    const copy_url_btn = document.getElementById("copy_button");
+    copy_url_btn.innerText = "Copied URL!";
+    setTimeout(() => {
+        copy_url_btn.innerText = "Copy BIOS URL";
+    }, 2000)
   }
 </script>
 
@@ -23,7 +28,7 @@
     <h2 class="subheading">For Testing Chromebooks</h2>
 
     <div class="center-div">
-        <button class="glassbutton" onclick="copy()">
+        <button id="copy_button" class="glassbutton" onclick="copy()">
             Copy BIOS URL
         </button>
         <a class="glassbutton" href="keytest.html">
@@ -39,5 +44,6 @@
   </div>
 
 </body>
+
 
 
