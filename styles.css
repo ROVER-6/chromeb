@@ -77,3 +77,75 @@
 .vertical-center {
   margin-top: 35vh;
 }
+
+.changelogbutton {
+  display: flex;
+  position: absolute;
+  margin-top: -32.5vh;
+  margin-left: 1lh;
+  padding: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-family: "Lexend Exa";
+  font-size: 14px;
+  font-weight: lighter;
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+
+.changelogbox {
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  animation: fadeIn 1s ease-in-out;
+  backdrop-filter: blur(5px);
+  text-align: center;
+  width: 35%;
+  font-family: "Lexend Exa";
+  font-weight: lighter;
+  color: white;
+  padding: 10px;
+}
+
+.changelogtitle {
+  text-align: center;
+  font-family: "Lexend Exa";
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.returnbutton {
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  animation: fadeIn 1s ease-in-out;
+  color: white;
+  font-family: "Lexend Exa";
+  font-weight: lighter;
+  padding: 8px;
+  position: absolute;
+  display: flex;
+  margin-left: 2vh;
+  margin-top: -32.5vh;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: ease-in-out 0.2s;
+}
+
+.returnbutton:hover {
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+  animation: fadeIn 1s ease-in-out;
+  color: white;
+  font-family: "Lexend Exa";
+  font-weight: lighter;
+  padding: 8px;
+  position: absolute;
+  display: flex;
+  margin-left: 2vh;
+  margin-top: -32.5vh;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
