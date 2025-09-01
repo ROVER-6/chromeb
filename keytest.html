@@ -313,6 +313,10 @@ document.addEventListener('keydown', (ev) => {
     ev.preventDefault()
   }
 
+  if (ev.code ==== 'MetaLeft') {
+    ev.preventDefault()
+  }
+
   markByCode(ev.code);
   addRecentKey(ev.code);
 
@@ -362,6 +366,7 @@ document.addEventListener('auxclick', e => {
 
 </body>
 </html>
+
 
 
 
